@@ -1,0 +1,173 @@
+﻿<Window x:Class="MySecretCode.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MySecretCode"
+        mc:Ignorable="d"
+        Title="MySecretCode" Height="552.41" Width="471.343" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="{x:Null}" Icon="икона.png">
+
+    <Window.Resources>
+
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="#FFFFE696"></Setter>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF7D7D51"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TextBoxStyle1" TargetType="TextBox">
+            <Setter Property="Background" Value="#FFFFEFAD"/>
+            <Setter Property="BorderBrush" Value="Black"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border CornerRadius="2" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost" 
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#FF7D7D51"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="RadioButtonStyle1" TargetType="RadioButton">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <BulletDecorator Background="Transparent" Cursor="Hand">
+                            <BulletDecorator.Bullet>
+                                <Grid Height="15" Width="15">
+                                    <Border Name="RadioButton" Background="Transparent" BorderBrush="Black" BorderThickness="2" CornerRadius="25" />
+                                </Grid>
+                            </BulletDecorator.Bullet>
+                            <TextBlock Margin="3,1,0,0" Foreground="Black" FontFamily="Segoe UI" FontSize="12">
+                        <ContentPresenter/>
+                            </TextBlock>
+                        </BulletDecorator>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="RadioButton" Property="Background" Value="#FFEAC644"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid Margin="1,-2,-7.2,-4.8" x:Name="D">
+        
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFFFE09E" Offset="1"/>
+                <GradientStop Color="#FFFFEECA" Offset="0.42"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="225*"/>
+            <ColumnDefinition Width="236*"/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Image Margin="87.4,-9,-34.8,182" Source="тян2.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="2" Opacity="0.2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="181.873"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Grid.ColumnSpan="3" Margin="-175,86,96.2,-144" Source="тян1.png" Opacity="0.405"/>
+        
+        <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="5" Height="335" Background="#FFF4CA3C" Grid.Column="2" Margin="4.2,0,0,0" BorderBrush="Black"/>
+        <Label Content="Label" Height="5" Margin="0,335,0,0" VerticalAlignment="Top" Background="#FFF4CA3C" Foreground="{x:Null}" Width="471" Grid.ColumnSpan="3" HorizontalAlignment="Left"/>
+        <Label Grid.ColumnSpan="3" Content="Зашифрованное сообщение:" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" Height="24" Width="245"/>
+        <Label Grid.ColumnSpan="3" Content="Дешифрованное сообщение:" HorizontalAlignment="Left" Margin="10,424,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" Height="24" Width="225"/>
+        <Label Grid.ColumnSpan="2" Content="Символ" HorizontalAlignment="Left" Margin="21,16,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" RenderTransformOrigin="0.431,0.45"/>
+        <Label Grid.ColumnSpan="2" Content="Значение" HorizontalAlignment="Left" Margin="139,16,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3"/>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="97,49,0,0" VerticalAlignment="Top" Height="9" Width="36" Background="#FF6B6B6B"/>
+        <Label Grid.ColumnSpan="2" Content="" HorizontalAlignment="Left" Margin="97,63,0,0" VerticalAlignment="Top" Height="9" Width="36" Background="#FF6B6B6B"/>
+        
+        <Button x:Name="AddSymbol" Grid.ColumnSpan="2" Content="Добавить" Margin="10,95,129.6,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" FontWeight="Bold" Height="26" RenderTransformOrigin="0.5,0.5" Click="AddSymbol_Click" Style="{DynamicResource ButtonStyle1}"/>
+        <Button x:Name="ClearSymbols" Grid.ColumnSpan="2" Content="Очистить" HorizontalAlignment="Left" Margin="130,95,0,0" VerticalAlignment="Top" Width="90" FontFamily="Trajan Pro 3" FontWeight="Bold" Height="26" Click="ClearSymbols_Click" Style="{DynamicResource ButtonStyle1}">
+        </Button>
+        
+        <Label Content="Текущие значения алфавита:" HorizontalAlignment="Left" Margin="14.4,16,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" Grid.Column="2" Height="35" Width="226"/>
+        <Label x:Name="WarningText" Grid.ColumnSpan="3" Content="Одно из полей не заполнено или символ уже есть в алфавите!" HorizontalAlignment="Left" Margin="-2,126,0,0" VerticalAlignment="Top" FontFamily="Trajan Pro 3" FontSize="6" Width="235" Background="{x:Null}" Foreground="#FFFF5757" Visibility="Hidden" Height="37"/>
+        <TextBox x:Name="SymbolInput" MaxLength="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="40" Margin="34,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" FontSize="35" FontFamily="Trebuchet MS" AutomationProperties.HelpText="Зашифрованный символ" Style="{DynamicResource TextBoxStyle1}"/>
+        <TextBox x:Name="SymbolOutput" MaxLength="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="40" Margin="156,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" FontSize="35" Background="#FFF9EFAD" FontFamily="Trebuchet MS" UndoLimit="98" AutomationProperties.HelpText="Расшифрованный символ" Style="{DynamicResource TextBoxStyle1}"/>
+
+        <TextBox x:Name="wordBook" TextAlignment="Center" Grid.Column="2" HorizontalAlignment="Left" Height="275" Margin="27.4,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" Background="#FFFFEFAD" FontFamily="Trebuchet MS" FontSize="20" FontWeight="Bold" FontStyle="Italic" Style="{DynamicResource TextBoxStyle1}"/>
+        <Button x:Name="Clear_WordBook" Content="" HorizontalAlignment="Left" Margin="179.4,94,0,0" VerticalAlignment="Top" Width="35" FontFamily="Trajan Pro 3" FontWeight="Bold" Height="35" Click="Clear_WordBook_Click" Grid.Column="2" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}">
+            <Button.Background>
+                <ImageBrush ImageSource="очистить.png"/>
+            </Button.Background>
+            <Button.FocusVisualStyle>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.FocusVisualStyle>
+        </Button>
+        <Button x:Name="Change_WorkBook" Content="" HorizontalAlignment="Left" Margin="178.4,46,0,0" VerticalAlignment="Top" Width="35" FontFamily="Trajan Pro 3" FontWeight="Bold" Height="35" Click="Change_WordBook_Click" Grid.Column="2" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle1}">
+            <Button.Background>
+                <ImageBrush ImageSource="сохранить.png"/>
+            </Button.Background>
+            <Button.FocusVisualStyle>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.FocusVisualStyle>
+        </Button>
+        
+        <TextBox x:Name="codeBox" IsReadOnly="True" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="45" Margin="10,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" FontFamily="Trebuchet MS" FontSize="25" Background="#FFFFEFAD" Style="{DynamicResource TextBoxStyle1}"/>
+        <TextBox x:Name="unCode_Box" IsReadOnly="True" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="45" Margin="10,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" FontFamily="Trebuchet MS" FontSize="25" Background="#FFFFEFAD" TextChanged="UnBox_TextChange" Style="{DynamicResource TextBoxStyle1}"/>
+        <RadioButton x:Name="checkUnCodeBox" Content="OFF" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,427,0,0" VerticalAlignment="Top" Checked="UnCodeBox_Checked" FontWeight="Bold" Style="{DynamicResource RadioButtonStyle1}"/>
+        <RadioButton x:Name="checkCodeBox" Content="OFF" Grid.Column="2" HorizontalAlignment="Left" Margin="4.4,348,0,0" VerticalAlignment="Top" Checked="CodeBox_Checked" FontWeight="Bold" Style="{DynamicResource RadioButtonStyle1}"/>
+
+        <TextBox x:Name="codeBox_Copy" IsReadOnly="false" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="45" Margin="10,374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" FontFamily="Trebuchet MS" FontSize="25" Background="#FFFFEFAD" TextChanged="CodeBox_Copy_TextChange" Visibility="Hidden" Style="{DynamicResource TextBoxStyle1}"/>
+        <TextBox x:Name="unCode_Box_Copy" IsReadOnly="True" Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="45" Margin="10,453,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="434" FontFamily="Trebuchet MS" FontSize="25" Background="#FFFFEFAD" TextChanged="UnBox_TextChange" Visibility="Hidden" Style="{DynamicResource TextBoxStyle1}"/>
+
+    </Grid>
+</Window>
