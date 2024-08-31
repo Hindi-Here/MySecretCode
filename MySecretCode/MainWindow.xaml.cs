@@ -21,11 +21,10 @@ namespace MySecretCode
     /// </summary>
     public partial class MainWindow : Window
     {
-        string[] codeReader = File.ReadAllLines(@"code.txt"); //для статического определения длины алфавита
         public MainWindow()
         {
             InitializeComponent();
-
+            string[] codeReader = File.ReadAllLines(@"code.txt"); //для определения существующего алфавита
             for (int i = 0; i < codeReader.Length; i++)
                 wordBook.Text += codeReader[i] + "\n";
         }
@@ -33,7 +32,7 @@ namespace MySecretCode
         private void AddSymbol_Click(object sender, RoutedEventArgs e) //добавление символов в алфавит
         {
             bool SearchSymbol = false; // булевая для объявления флага "есть повторения / нет повторений" 
-            codeReader = File.ReadAllLines(@"code.txt"); //для динамического определения длины алфавита
+            string[] codeReader = File.ReadAllLines(@"code.txt"); //для динамического определения длины алфавита
 
             //отслеживание повторяются ли значения алфавита или нет
             for (int i = 0; i < codeReader.Length; i++)
@@ -147,7 +146,7 @@ namespace MySecretCode
 
         void SearchSymbol(char[] wordsInBox, int[] numbSPL ,TextBox MethodBox) //метод шифровки и дешифровки
         {
-            codeReader = File.ReadAllLines(@"code.txt");
+            string[]codeReader = File.ReadAllLines(@"code.txt");
             for (int i = 0; i < wordsInBox.Length; i++)
             {
                 bool SearchSymbol = false;
